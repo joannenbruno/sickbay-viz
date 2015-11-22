@@ -1,6 +1,6 @@
 // set the global variable
 var Data;
-var reducedData= {data:[]};
+var reducedData= {highestCosting:[]};
 
 $.getJSON('http://abbottmb12.github.io/health.json', function(data){
 	Data = data;
@@ -12,10 +12,11 @@ $.getJSON('http://abbottmb12.github.io/health.json', function(data){
 	for (var i=0,  tot=Data.data.length; i < tot; i++) {
 		if (parseInt(Data.data[i][17]) > parseInt(highestCost) ){
 			console.log(Data.data[i][17] + ">?" + highestCost);
-			reducedData.data = Data.data[i];
-			highestCost = reducedData.data[17];
+			reducedData.highestCosting[0] = Data.data[i];
+			highestCost = reducedData.highestCosting[0][17];
 		}
 	}
-	$('#content').html(JSON.stringify(reducedData));
+	$('h3').hide();
+	$('textarea').show();
+	$('textarea').html(JSON.stringify(reducedData, null, 4));
 });
-
