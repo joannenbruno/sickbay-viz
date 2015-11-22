@@ -2,7 +2,7 @@
 var Data;
 var reducedData= {data:[]};
 
-$.getJSON('http://joannenbruno.github.io/sickbay-viz/health.json', function(data){
+$.getJSON('http://abbottmb12.github.io/health.json', function(data){
 	Data = data;
 	//reducedData = Data.data[1];
 	//[17] for total cost column
