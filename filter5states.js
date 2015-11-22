@@ -48,7 +48,7 @@ function download(formatted) {
 			}
 		}
 		//change k<50 based on how many states you want to filter for testing;
-		for (var k=0; k < 50; k++) {
+		for (var k=0; k < 5; k++) {
 			var tempHighLowData = {stateName : states[k] , highestCosting:[], lowestCosting:[], data:[]}
 			reducedData.states[k] = tempHighLowData;
 			
