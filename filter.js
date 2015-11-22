@@ -2,7 +2,11 @@
 var Data;
 var reducedData= {data:[]};
 
+<<<<<<< HEAD
 $.getJSON('https://drive.google.com/open?id=0B1b042ds2aI9WWE0ajBES3B3Tms', function(data){
+=======
+$.getJSON('http://joannenbruno.github.io/sickbay-viz/health.json', function(data){
+>>>>>>> 240ada00f5f108f879602c2e4108724cf3f08ea8
 	Data = data;
 	//reducedData = Data.data[1];
 	//[17] for total cost column
