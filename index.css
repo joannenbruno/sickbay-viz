@@ -7,7 +7,9 @@
 	font-size: 26px;
 	background-color: #DA4444;
 	height: 75px;
-	width: 100%;
+	width: -moz-calc(100% - 10px);
+    width: -webkit-calc(100% - 10px);
+    width: calc(100% - 10px);
 	padding-left: 10px;
 	white-space: nowrap;
 }
