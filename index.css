@@ -1,0 +1,85 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.title{
+	font-size: 26px;
+	background-color: #DA4444;
+	height: 75px;
+	width: 100%;
+	padding-left: 10px;
+	white-space: nowrap;
+}
+
+.title .content{
+
+	padding-top:20px;
+}
+
+.title .name{
+	color: white;
+	font-weight: bold;
+}
+
+.title .description{
+	color: white;
+	font-style: italic;
+}
+
+.main{
+	padding-top: 30px;
+	height: 600px;
+	width: 100%;
+}
+
+.filter{
+	overflow: auto;
+}
+
+.filter .steps{
+	border:1px solid black;
+	margin-left: 30px;
+	height: 75px;
+	width: 400px;
+	float: left;
+}
+
+.filter .search{
+	border:1px solid black;
+	margin-left: 30px;
+	height: 25px;
+	width: 200px;
+}
+
+.filter .float{
+	float:right;
+	margin-right: 30px;
+	padding-top: 18px;
+}
+
+.filter .button{
+	border:1px solid black;
+	margin: 5px 0px 0px 30px;
+	height: 25px;
+	width: 50px;
+	float: right;
+}
+
+.filter .overall{
+	
+}
+
+.filter .medicare{
+	
+}
+
+.visuals {
+	border:1px solid black;
+	margin: 30px 0px 0px 30px;
+	height: 600px;
+	width: -moz-calc(100% - 60px);
+    width: -webkit-calc(100% - 60px);
+    width: calc(100% - 60px);
+}
+
