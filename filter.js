@@ -1,7 +1,7 @@
 // set the global variable
 var Data;
 var states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
-var reducedData= {serviceTypes:[], nodeDescription:[], states:[]};
+var reducedData= {serviceTypes:[], nodeDescription : '', states:[]};
 
 Array.prototype.subarray=function(start,end){
      if(!end){ end=-1;} 
@@ -34,7 +34,7 @@ function download(formatted) {
 		Data = data;
 
 		//making the node descriptions
-		reducedData.nodeDescription.push({drgDefinition:'Code and description identifying the DRG. DRGs are a classification system that groups similar clinical conditions (diagnoses) and the procedures furnished by the hospital during the stay.',
+		reducedData.nodeDescription = {drgDefinition:'Code and description identifying the DRG. DRGs are a classification system that groups similar clinical conditions (diagnoses) and the procedures furnished by the hospital during the stay.',
 		providerID:'Provider Identifier billing for inpatient hospital services.',
 		providerName:'Name of the Provider',
 		providerAddress:'Address of the Provider',
@@ -44,7 +44,7 @@ function download(formatted) {
 		totalDischarges:'The number of discharges billed by the provider for inpatient hospital services.',
 		totalCoveredPayments:'The providers average charge for services covered by Medicare for all discharges in the DRG. These will vary from hospital to hospital because of differences in hospital charge structures.',
 		totalPayments:'The average of Medicare payments to the provider for the DRG including the DRG amount, teaching,  disproportionate share, capital, and outlier payments for all cases. Also included are co-payment and deductible amounts that the patient is responsible for',
-		totalMedicarePayments:'The total amount that can be payed by Medicare'});
+		totalMedicarePayments:'The total amount that can be payed by Medicare'}
 		
 		//making a list of each unique drg without the prefixes and suffixes
 		for (var i=0,  tot=Data.data.length; i < tot; i++) {
