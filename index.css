@@ -35,6 +35,9 @@
 
 .filter{
 	overflow: auto;
+	width: -moz-calc(100% - 30px);
+    width: -webkit-calc(100% - 30px);
+    width: calc(100% - 30px);
 }
 
 .filter .steps{
@@ -54,7 +57,6 @@
 
 .filter .float{
 	float:right;
-	margin-right: 30px;
 	padding-top: 18px;
 }
 
