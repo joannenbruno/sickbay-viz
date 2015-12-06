@@ -2,22 +2,18 @@
 var outputData;
 
 // closure function to obtain JSON data
-/*(function(){
+(function(){
   // get the output.json file
   d3.json("data/output.json", function(error, dataSet){
     if(error) return console.warn(error);
     outputData = dataSet;
     console.log(outputData);
+	drawGraph();
   });
-})();*/
+})();
 
 // parses and formats the data for the nvd3.js graph
 function myData(points) {
-	d3.json("data/output.json", function(error, dataSet){
-		if(error) return console.warn(error);
-		outputData = dataSet;
-		console.log(outputData);
-	});
     // final data array object for graph, array of shapes for graph
     var data = [],
       shapes = ['circle', 'cross', 'triangle-up', 'diamond', 'square'],
@@ -60,33 +56,33 @@ function myData(points) {
 }
 
 // disgusting hack to allow json to load before graph is rendered
-setTimeout(function() {
-  nv.addGraph(function() {
-    var chart = nv.models.scatterChart()
-                  // showDist, when true, will display those
-                  // little distribution lines on the axis.
-                  .showDistX(true)
-                  .showDistY(true)
-                  .color(d3.scale.category10().range());
+function drawGraph(){
+	nv.addGraph(function() {
+		var chart = nv.models.scatterChart()
+					  // showDist, when true, will display those
+					  // little distribution lines on the axis.
+					  .showDistX(true)
+					  .showDistY(true)
+					  .color(d3.scale.category10().range());
 
-    // configure how the tooltip looks.
-    chart.tooltip.contentGenerator(function (key) {
-      return '<p><strong>' + key + '</strong></p>';
-    });
+		// configure how the tooltip looks.
+		chart.tooltip.contentGenerator(function (key) {
+		  return '<p><strong>' + key + '</strong></p>';
+		});
 
-    // axis settings
-    chart.xAxis.tickFormat(d3.format('.02f'));
-    chart.yAxis.tickFormat(d3.format('.02f'));
+		// axis settings
+		chart.xAxis.tickFormat(d3.format('.02f'));
+		chart.yAxis.tickFormat(d3.format('.02f'));
 
-    d3.select('#chart svg')
-        .datum(myData(40))
-        .transition().duration(500)
-        .call(chart);
+		d3.select('#chart svg')
+			.datum(myData(40))
+			.transition().duration(500)
+			.call(chart);
 
-    nv.utils.windowResize(chart.update);
+		nv.utils.windowResize(chart.update);
 
 
-    console.log("Generated chart");
-    return chart;
-  });
-}, 3000)
+		console.log("Generated chart");
+		return chart;
+	});
+}
