@@ -19,7 +19,7 @@ function myData(points) {
       shapes = ['circle', 'cross', 'triangle-up', 'diamond', 'square'],
       random = d3.random.normal();
 
-	console.log("here?" + outputData);
+	console.log(outputData);
     for (i = 0; i < outputData.serviceTypes.length; i++) {
 
       data.push({
@@ -40,11 +40,11 @@ function myData(points) {
         // , shape: (Math.random() > 0.95) ? shapes[j % 5] : "circle"
         });
       }*/
-	  for (j = 0; j < outputData.states[0].drg.length; j++) {
+	  for (j = 0; j < outputData.states[0].drg[0].data.length; j++) {
         // push into the axis' the pertinent data
         data[i].values.push({
           x: j
-        , y: outputData.states[0].drg[j].avgTotalCost
+        , y: parseInt(outputData.states[0].drg[0].data[j][10])
         // configure the shape of each scatter point.
         // , shape: (Math.random() > 0.95) ? shapes[j % 5] : "circle"
         });
