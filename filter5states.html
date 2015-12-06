@@ -3,20 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>Filter</title>
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="Filesaver.js"></script>
-	<script type="text/javascript" src="filter5states.js" charset="utf-8"></script>
+
 	<style>
 		.text{
 			width: 302px;
 			margin-bottom: 4px;
 		}
 	</style>
+
   </head>
   <body>
-	<div class = "text">Only filters 5 states so that the file can be easily viewed without the text editor glitching, full version is available on the github.</div>
-	<button onclick="download('formatted')">Filter Data Formatted</button>
-	<button onclick="download('min')">Filter Data Minimum</button>
-	<pre></pre>
+  	<div class = "text">Only filters 5 states so that the file can be easily viewed
+      without the text editor glitching, full version is available on the github.</div>
+      
+  	<button onclick="download('formatted')">Filter Data Formatted</button>
+  	<button onclick="download('min')">Filter Data Minimum</button>
+  	<pre></pre>
+
+    <!-- jQuery and filtering scripts includes -->
+    <script src="http://code.jquery.com/jquery-1.10.2.js" defer></script>
+    <script type="text/javascript" src="scripts\Filesaver.js" defer></script>
+	  <script type="text/javascript" src="scripts\filter5states.js" defer></script>
   </body>
 </html>

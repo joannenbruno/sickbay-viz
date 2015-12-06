@@ -71,19 +71,45 @@
 }
 
 .filter .overall{
-	
+
 }
 
 .filter .medicare{
-	
+
 }
 
 .visuals {
 	border:1px solid black;
 	margin: 30px 0px 0px 30px;
 	height: 600px;
-	width: -moz-calc(100% - 60px);
-    width: -webkit-calc(100% - 60px);
-    width: calc(100% - 60px);
+
 }
 
+
+
+.background {
+  fill: none;
+  pointer-events: all;
+}
+
+.feature {
+  fill: #ccc;
+  cursor: pointer;
+}
+
+.feature.active {
+  fill: orange;
+}
+
+.mesh {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+svg {
+position: absolute;
+left: 75px;
+top: 250px;
+}
