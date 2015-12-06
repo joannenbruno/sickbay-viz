@@ -14,16 +14,16 @@ var outputData;
 // parses and formats the data for the nvd3.js graph
 function myData(points) {
 	d3.json("data/output.json", function(error, dataSet){
-    if(error) return console.warn(error);
-    outputData = dataSet;
-    console.log(outputData);
+		if(error) return console.warn(error);
+		outputData = dataSet;
+		console.log(outputData);
 	});
     // final data array object for graph, array of shapes for graph
     var data = [],
       shapes = ['circle', 'cross', 'triangle-up', 'diamond', 'square'],
       random = d3.random.normal();
 
-
+	console.log("here?" + outputData);
     for (i = 0; i < outputData.serviceTypes.length; i++) {
 
       data.push({
