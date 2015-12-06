@@ -42,7 +42,7 @@ function myData(points) {
 	  for (j = 0; j < outputData.states[0].drg.length; j++) {
         // push into the axis' the pertinent data
         data[i].values.push({
-          x: i
+          x: j
         , y: outputData.states[0].drg[j].avgTotalCost
         // configure the shape of each scatter point.
         // , shape: (Math.random() > 0.95) ? shapes[j % 5] : "circle"
