@@ -3,28 +3,14 @@
 	padding: 0;
 }
 
-.title{
-	font-size: 26px;
-	background-color: #DA4444;
-	height: 75px;
-	width: -moz-calc(100% - 10px);
-    width: -webkit-calc(100% - 10px);
-    width: calc(100% - 10px);
-	padding-left: 10px;
-	white-space: nowrap;
-}
 
-.title .content{
-
-	padding-top:20px;
-}
-
-.title .name{
+.brand-logo .name{
 	color: white;
 	font-weight: bold;
+	margin-left: 10px;
 }
 
-.title .description{
+.brand-logo .description{
 	color: white;
 	font-style: italic;
 }
@@ -86,7 +72,7 @@
 }
 
 
-
+/*US Map D3 Style*/
 .background {
   fill: none;
   pointer-events: all;
@@ -108,8 +94,21 @@
   stroke-linejoin: round;
 }
 
+/*US Map SVG Positioning*/
 svg {
 position: absolute;
 left: 75px;
 top: 250px;
+}
+
+
+/*Sticky Footer*/
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
 }
