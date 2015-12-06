@@ -30,11 +30,20 @@ function myData(points) {
         values: []
       });
 
-      for (j = 0; j < outputData.states.length; j++) {
+      /*for (j = 0; j < outputData.states.length; j++) {
         // push into the axis' the pertinent data
         data[i].values.push({
-          x: /* outputData.serviceTypes[i]*/ [j]
+          x: [j] //outputData.serviceTypes[i]
         , y: outputData.states[j].drg[i].avgTotalCost
+        // configure the shape of each scatter point.
+        // , shape: (Math.random() > 0.95) ? shapes[j % 5] : "circle"
+        });
+      }*/
+	  for (j = 0; j < outputData.states[0].drg.length; j++) {
+        // push into the axis' the pertinent data
+        data[i].values.push({
+          x: [i]
+        , y: outputData.states[0].drg[j].avgTotalCost
         // configure the shape of each scatter point.
         // , shape: (Math.random() > 0.95) ? shapes[j % 5] : "circle"
         });
