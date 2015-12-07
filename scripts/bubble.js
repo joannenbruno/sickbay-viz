@@ -32,14 +32,36 @@ d3.json("data\\flare.json", function(error, root) {
       .filter(function(d) { return !d.children; }))
     .enter().append("g")
       .attr("class", "node")
-      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+	  
+	  .style("fill", function(d) { return color(d.packageName); })
+	  	.on("mouseover", function(d,i)
+	{
+		d3.select(this).style("fill", "gold"); 
+		showToolTip(" "+d.className+"<br>"+d.value+" ", d3.event.pageX+15 ,d3.event.pageY-55,true);
+		//console.log(d3.mouse(this));
+	})
+	.on("mousemove", function(d,i)
+	{
 
+		tooltipDivID.css({top:d3.event.pageY-55,left:d3.event.pageX+15});
+		//showToolTip("<ul><li>"+data[0][i]+"<li>"+data[1][i]+"</ul>",d.x+d3.mouse(this)[0]+10,d.y+d3.mouse(this)[1]-10,true);
+		//console.log(d3.mouse(this));
+	})	
+    .on("mouseout", function()
+	{
+		d3.select(this).style("fill", function(d) { return color(d.packageName); });
+		showToolTip(" ",0,0,false);
+	})	
+	;
+	  
+	  
   node.append("title")
       .text(function(d) { return d.className + ": " + format(d.value); });
 
   node.append("circle")
         .attr("r", function(d) { return d.r; })
-        .style("fill", function(d) { return color(d.packageName); })
+        /*.style("fill", function(d) { return color(d.packageName); })
         .on("mouseover", function(d) {
                 tooltip.text(d.className + ": " + format(d.value));
                 tooltip.style("visibility", "visible");
@@ -47,7 +69,7 @@ d3.json("data\\flare.json", function(error, root) {
         .on("mousemove", function() {
             return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
         })
-        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});*/
 
   node.append("text")
       .style("font-size", "1px")
@@ -55,8 +77,25 @@ d3.json("data\\flare.json", function(error, root) {
       .each(getSize)
       .attr("dy", ".3em")
       .style("text-anchor", "middle")
+	  .style("fill","black")
       .style("font-size", function(d) { return d.scale + "px"; });
 });
+
+function showToolTip(pMessage,pX,pY,pShow)
+{
+  if (typeof(tooltipDivID)=="undefined")
+  {
+             tooltipDivID =$('<div id="messageToolTipDiv" style="position:absolute;display:block;z-index:10000;border:2px solid black;background-color:rgba(0,0,0,0.8);margin:auto;padding:3px 5px 3px 5px;color:white;font-size:12px;font-family:arial;border-radius: 5px;vertical-align: middle;text-align: center;min-width:50px;overflow:auto;"></div>');
+
+		$('body').append(tooltipDivID);
+  }
+  if (!pShow) { tooltipDivID.hide(); return;}
+  //MT.tooltipDivID.empty().append(pMessage);
+  tooltipDivID.html(pMessage);
+  tooltipDivID.css({top:pY,left:pX});
+  tooltipDivID.show();
+}
+
 
 function getSize(d) {
   var bbox = this.getBBox(),
