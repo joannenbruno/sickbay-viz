@@ -3,7 +3,6 @@
 	padding: 0;
 }
 
-
 .brand-logo .name{
 	color: white;
 	font-weight: bold;
@@ -17,8 +16,9 @@
 
 .main{
 	padding-top: 30px;
-	height: 600px;
+	height: auto;
 	width: 100%;
+	position:relative;
 }
 
 .filter{
