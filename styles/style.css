@@ -115,8 +115,11 @@
   stroke-linejoin: round;
 }
 
-/*US Map SVG Positioning*/
+#about-container {
+	padding: 10px 10px 10px 10px;
+}
 
+/*US Map SVG Positioning*/
 
 
 /*Sticky Footer*/
@@ -129,5 +132,5 @@ body > #container { height: auto; min-height: 100%; }
 	position: relative;
 	z-index: 10;
 	height: 3em;
-	margin-top: -3em
+	margin-top: -3em;
 }
