@@ -1,5 +1,5 @@
 
-var width = 480,
+var width = 400,
     height = 250,
     active = d3.select(null);
 
@@ -10,7 +10,7 @@ var projection = d3.geo.albersUsa()
 var path = d3.geo.path()
     .projection(projection);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#USMap").append("svg")
     .attr("width", width)
     .attr("height", height);
 

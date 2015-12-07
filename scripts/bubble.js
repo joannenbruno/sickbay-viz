@@ -1,4 +1,4 @@
-var diameter = 960,
+var diameter = 500,
     format = d3.format(",d"),
     color = d3.scale.category20c();
 
@@ -7,7 +7,7 @@ var bubble = d3.layout.pack()
     .size([diameter, diameter])
     .padding(1.5);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#bubbleMap").append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
     .attr("class", "bubble");
