@@ -67,9 +67,9 @@
 }
 
 .visuals {
-	width: -moz-calc(100% - 60px);
-    width: -webkit-calc(100% - 60px);
-    width: calc(100% - 60px);
+	width: -moz-calc(100% - 30px);
+    width: -webkit-calc(100% - 30px);
+    width: calc(100% - 30px);
 	clear: both;
 
 }
