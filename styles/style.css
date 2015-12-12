@@ -72,6 +72,7 @@
     width: calc(100% - 30px);
 	clear: both;
 	max-width: 1600px;
+	min-width: 1000px;
 }
 
 .maps{
@@ -103,6 +104,12 @@
 	width: -moz-calc(100% - 510px);
     width: -webkit-calc(100% - 510px);
     width: calc(100% - 510px);
+}
+
+@media (max-width: 1000px) {
+  .graph{
+    float: none;
+  }
 }
 
 /*US Map D3 Style*/
