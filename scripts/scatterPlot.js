@@ -109,18 +109,23 @@ function drawGraph(){
 		
 		var height = 600;
 		var width = 800;
-		svg.attr("width", width)
-			.attr("height", height)
+		//svg.attr("width", width)
+		svg.attr("height", height)
 			.datum(myData(40))
 			.call(chart);
 
 			
 		svg.append("g")
-      .attr("class", "title")
-      .attr("transform", "translate(" + (width/2 - 71) + "," + 15 + ")")
+      .attr("class", "nv-axislabel")
+      //.attr("transform", "translate(" + (width/2 - 71) + "," + 15 + ")")
+      .attr("transform", "translate("+ 75 + "," + 15 + ")")
     .append("text")
 	  .style("font-weight", "bold")
+	  .style("text-align", "center")
+	  .style("width", "100%")
       .text("Hospital Service Cost Graph");
+		
+		nv.utils.windowResize(chart.update);
 		
 		console.log("Generated chart");
 		return chart;

@@ -26,7 +26,6 @@
 	width: -moz-calc(100% - 30px);
     width: -webkit-calc(100% - 30px);
     width: calc(100% - 30px);
-	max-width: 1300px;
 	min-width: 660px;
 }
 
@@ -89,9 +88,9 @@
 	position:absolute;
 }
 
-#chart{
-	width: 800px;
-	height: 600px;
+#bubbleGraph{
+	height:600px;
+	width:100%;
 }
 
 .nv-axislabel{
@@ -100,6 +99,9 @@
 
 .graph{
 	float:left;
+	width: -moz-calc(100% - 510px);
+    width: -webkit-calc(100% - 510px);
+    width: calc(100% - 510px);
 }
 
 /*US Map D3 Style*/
