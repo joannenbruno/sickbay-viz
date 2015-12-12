@@ -39,15 +39,22 @@ function myData(points) {
 		}
 	}*/
 
-    //for (var i = 0; i < outputData.states[0].drg[0].data.length; i++) {
-	  data.push({
-        // set key as service type for visual output
-        //key: 'Group: ' + outputData.serviceTypes[i].toLowerCase(),
-        key: outputData.states[0].drg[0].type,
-	   //key: "this",
-        // TODO: set values as what we want in the tooltip
-        values: []
-      });
+    for (var i = 0; i < 2; i++) {
+		if(i==0){
+			data.push({
+				// set key as service type for visual output
+				//key: 'Group: ' + outputData.serviceTypes[i].toLowerCase(),
+				//key: outputData.states[0].drg[0].type,
+				key: "Total Cost",
+				values: []
+			});
+		}
+		else{
+			data.push({
+				key: "Medicare Coverage",
+				values: []
+			});
+		}
 	  
 	 /* data[i].values.push({
           x: i
@@ -55,18 +62,17 @@ function myData(points) {
 		, size: parseInt(outputData.states[0].drg[0].data[i][10])
       });*/
 	  
-	  
 	  for (j = 0; j < outputData.states[0].drg[0].data.length; j++) {
         // push into the axis' the pertinent data
-        data[0].values.push({
+        data[i].values.push({
           x: j
-        , y: parseInt(outputData.states[0].drg[0].data[j][10])
+        , y: parseInt(outputData.states[0].drg[0].data[j][10+i])
         // configure the shape of each scatter point.
         //, shape: (Math.random() > 0.95) ? shapes[j % 5] : "circle"
-		, size: parseInt(outputData.states[0].drg[0].data[j][10])
+		, size: parseInt(outputData.states[0].drg[0].data[j][10+i])
         });
       }
-
+	}
 
     console.log("DEBUG: Returned data object from myData method");
     return data;
@@ -79,14 +85,28 @@ function drawGraph(){
 			.showDistX(true)
 			.showDistY(true)
 			.useVoronoi(true)
-			//.color(d3.scale.category10()[3])
+			//.color(d3.scale.category10().range())
 			.duration(300)
-			.showLegend(false)
+			.showLegend(true)
 			;
 		
+		/*chart.color(function (d, i) {
+			var colors = d3.scale.category20().range().slice(10);
+			console.log(colors);
+			console.log(i);
+			return colors[i % colors.length-1];
+		})*/
+		
 		chart.color(function (d, i) {
-			var colors = d3.scale.category10().range();
-			return colors[3];
+			//var colors = d3.scale.category10().range();
+			var colors = ["#D32F2F", "#0097A7"];
+			//console.log(colors);
+			return colors[i];
+			//return "#00E676";//green
+			//return "#651FFF";//purple
+			//return "#0097A7";//blue
+			//return "#D32F2F";//red
+			//return ["#D32F2F", "#0097A7"];//red blue
 		});
 
 
