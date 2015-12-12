@@ -83,10 +83,19 @@
 }
 
 #USMap{
-	position:absolute;
+	position:relative;
 }
 
 #bubbleMap{
+	position:relative;
+}
+
+#mapWrap{
+	position:absolute;
+	margin-left: 30px;
+}
+
+#bubbleWrap{
 	position:absolute;
 }
 

@@ -7,12 +7,12 @@ var bubble = d3.layout.pack()
     .size([diameter, diameter])
     .padding(1.5);
 
-var svg = d3.select("#bubbleMap").append("svg")
+var Bsvg = d3.select("#bubbleMap").append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
     .attr("class", "bubble");
 
-var tooltip = d3.select("body")
+var Btooltip = d3.select("body")
     .append("div")
     .style("position", "absolute")
     .style("z-index", "10")
@@ -27,7 +27,7 @@ var tooltip = d3.select("body")
 d3.json("data\\flare.json", function(error, root) {
   if (error) throw error;
 
-  var node = svg.selectAll(".node")
+  var node = Bsvg.selectAll(".node")
       .data(bubble.nodes(classes(root))
       .filter(function(d) { return !d.children; }))
     .enter().append("g")
@@ -63,13 +63,13 @@ d3.json("data\\flare.json", function(error, root) {
         .attr("r", function(d) { return d.r; })
         /*.style("fill", function(d) { return color(d.packageName); })
         .on("mouseover", function(d) {
-                tooltip.text(d.className + ": " + format(d.value));
-                tooltip.style("visibility", "visible");
+                Btooltip.text(d.className + ": " + format(d.value));
+                Btooltip.style("visibility", "visible");
         })
         .on("mousemove", function() {
-            return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+            return Btooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
         })
-        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});*/
+        .on("mouseout", function(){return Btooltip.style("visibility", "hidden");});*/
 
   node.append("text")
       .style("font-size", "1px")

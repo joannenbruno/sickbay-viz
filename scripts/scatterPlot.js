@@ -9,7 +9,7 @@ var outputData;
     outputData = dataSet;
     console.log(outputData);
 	$( document ).ready(function() {
-    drawGraph();
+		drawGraph();
 	});
   });
 })();
