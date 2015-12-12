@@ -8,7 +8,9 @@ var outputData;
     if(error) return console.warn(error);
     outputData = dataSet;
     console.log(outputData);
-	drawGraph();
+	$( document ).ready(function() {
+    drawGraph();
+	});
   });
 })();
 
