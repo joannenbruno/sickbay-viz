@@ -28,7 +28,7 @@ d3.json("data\\flare.json", function(error, root) {
   if (error) throw error;
 
   var node = Bsvg.selectAll(".node")
-      .data(bubble.nodes(classes(root))
+      .data(bubble.nodes(classes(root)) //NOTE**classes(root) is a member function of this file that sets up the data file they want to graph, this program is then structured around that json structure
       .filter(function(d) { return !d.children; }))
     .enter().append("g")
       .attr("class", "node")
