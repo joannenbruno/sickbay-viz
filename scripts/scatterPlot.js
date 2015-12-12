@@ -93,12 +93,20 @@ function drawGraph(){
 		  //return '<p><strong>' + key + '</strong></p>';
 		  return '<h3>' + key + '</h3>';
 		});*/
-
+		
 		// axis settings
 		chart.xAxis.tickFormat(d3.format('.02f'));
 		chart.yAxis.tickFormat(d3.format('.02f'));
-
+		chart.yAxis.tickFormat(function(d) { return "$" + d; });
+		
+		chart.xAxis.axisLabel("Hospitals");
+		chart.yAxis.axisLabel("Total Cost");
+		chart.yAxis.axisLabelDistance(10);
+		
 		var svg = d3.select('#chart svg')
+		//var format = d3.format(",.2f");
+		//d3.selectAll(".tick").text(function(d) { return "$" + format(d); });
+		
 		var height = 600;
 		var width = 800;
 		svg.attr("width", width)
@@ -106,6 +114,14 @@ function drawGraph(){
 			.datum(myData(40))
 			.call(chart);
 
+			
+		svg.append("g")
+      .attr("class", "title")
+      .attr("transform", "translate(" + (width/2 - 71) + "," + 15 + ")")
+    .append("text")
+	  .style("font-weight", "bold")
+      .text("Hospital Service Cost Graph");
+		
 		console.log("Generated chart");
 		return chart;
 	});

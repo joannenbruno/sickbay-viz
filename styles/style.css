@@ -93,6 +93,11 @@
 	width: 800px;
 	height: 600px;
 }
+
+.nv-axislabel{
+	font: bold 14px Arial !important;
+}
+
 .graph{
 	float:left;
 }
