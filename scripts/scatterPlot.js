@@ -85,14 +85,14 @@ function drawGraph(){
 		chart.color(function (d, i) {
 			var colors = d3.scale.category10().range();
 			return colors[3];
-		})
+		});
 
 
 		// configure how the tooltip looks.
-		/*chart.tooltip.contentGenerator(function (key) {
-		  //return '<p><strong>' + key + '</strong></p>';
-		  return '<h3>' + key + '</h3>';
-		});*/
+		chart.tooltip.contentGenerator(function (key) {
+		  return '<p><strong>' + JSON.stringify(key) + '</strong></p>';
+		  //return '<h3>' + key + '</h3>';
+		});
 		
 		// axis settings
 		chart.xAxis.tickFormat(d3.format('.02f'));
