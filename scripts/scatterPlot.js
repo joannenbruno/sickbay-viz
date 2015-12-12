@@ -90,7 +90,8 @@ function drawGraph(){
 
 		// configure how the tooltip looks.
 		chart.tooltip.contentGenerator(function (key) {
-		  return '<p><strong>' + JSON.stringify(key) + '</strong></p>';
+			console.log(JSON.stringify(key));
+		  return '<p><strong>' + JSON.stringify(key.point.size) + '</strong></p>';
 		  //return '<h3>' + key + '</h3>';
 		});
 		
