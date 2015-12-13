@@ -28,12 +28,16 @@
     width: calc(100% - 30px);
 	max-width: 1600px;
 	min-width: 660px;
+	margin-bottom: 10px;
 }
 
 .filter .state{
-	margin-left: 30px;
-	height: 75px;
-	float: left;
+	float: right;
+	margin-right: 20px;
+}
+
+.filter .service{
+	float: right;
 }
 
 .filter .float{
