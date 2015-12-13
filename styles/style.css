@@ -14,11 +14,19 @@
 	font-style: italic;
 }
 
+#nav-mobile{
+	margin-right: 10px;
+}
+
+.inside{
+	margin: 0px auto;
+	max-width: 1400px;
+}
+
 .main{
 	padding-top: 30px;
-	height: auto;
-	width: 100%;
-	position:relative;
+	margin: 10px auto;
+	max-width: 1500px;
 }
 
 /.filter{
@@ -55,12 +63,7 @@
 }
 
 .visuals {
-	width: -moz-calc(100% - 30px);
-    width: -webkit-calc(100% - 30px);
-    width: calc(100% - 30px);
 	clear: both;
-	max-width: 1600px;
-	min-width: 1030px;
 }
 
 .maps{
@@ -84,15 +87,11 @@
 
 .graph{
 	float:left;
-	width: -moz-calc(100% - 500px);
-    width: -webkit-calc(100% - 500px);
-    width: calc(100% - 500px);
-}
-
-@media (max-width: 1000px) {
-  .graph{
-    float: none;
-  }
+	width: -moz-calc(100% - 520px);
+    width: -webkit-calc(100% - 520px);
+    width: calc(100% - 520px);
+	min-width: 618px;
+	max-width: 1000px
 }
 
 /*US Map D3 Style*/

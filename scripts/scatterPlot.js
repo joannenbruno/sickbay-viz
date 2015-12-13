@@ -156,7 +156,7 @@ function drawGraph(){
 		
 		chart.xAxis.axisLabel("Hospitals");
 		chart.yAxis.axisLabel("Total Cost");
-		chart.yAxis.axisLabelDistance(10);
+		chart.yAxis.axisLabelDistance(6);
 		
 		csvg = d3.select('#chart svg')
 		//var format = d3.format(",.2f");
