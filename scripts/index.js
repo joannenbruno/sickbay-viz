@@ -9,9 +9,10 @@ window.onload = function(){
 	//service selector
 	
 	var service;
+	var dataset = getData();
 	service = '<option value="" disabled selected>Select a service</option>'
-	for(var i=0; i<outputData.serviceTypes.length; i++){
-		service+='<option value="'+i+'">'+outputData.serviceTypes[i]+'</option>'
+	for(var i=0; i<dataset.serviceTypes.length; i++){
+		service+='<option value="'+i+'">'+dataset.serviceTypes[i]+'</option>'
 	}
 	$("#serviceSelect").html(service);
 	

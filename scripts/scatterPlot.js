@@ -5,6 +5,10 @@ var chart;
 var svg;
 var cHeight = 600;
 var cWidth = 800;
+
+function getData(){
+	return outputData;
+}
 // closure function to obtain JSON data
 (function(){
   // get the output.json file
@@ -163,6 +167,8 @@ function drawGraph(){
 }
 
 function changeScatterData(state,drg){
+	d3.selectAll('.nv-distx').remove();
+	d3.selectAll('.nv-disty').remove();
 	svg.datum(myData(state,drg)).transition().duration(500).call(chart);
 	console.log(outputData.serviceTypes[drg]);
 	d3.select('#chart-title').remove();
