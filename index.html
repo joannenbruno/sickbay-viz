@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<script src="scripts/jquery-1.11.3.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="styles\style.css" />
 		<!--Import Google Icon Font-->
 		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,16 +13,16 @@
 		<script language= "javascript" src="scripts/topojson.v1.min.js"></script>
 		<script src="scripts\d3.min.js" charset="utf-8"></script>	
 		<script src="scripts\nv.d3.js"></script>
+
 		<script language="javascript" src="scripts\scatterPlot.js"></script>
 		<script language="javascript" src="scripts/index.js"></script>
 <!--Let browser know website is optimized for mobile-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 	</head>
 	<body>
 	<div id="container">
-		<script src="http://code.jquery.com/jquery-1.10.2.js" defer></script>
-			<script type="text/javascript" src="js/materialize.min.js"></script>
+		<script type="text/javascript" src="js/materialize.min.js"></script>
 
 		<nav>
 		<div class="nav-wrapper">
@@ -44,9 +45,14 @@
 
 		<div class="main">
 			<div class="filter">
-				<div class="steps">
-					<button onclick="show('map')">Show Map</button>
-					<button onclick="show('bubble')">Show Services</button>
+				<div class="state">
+					<label>Filter State</label>
+					  <select id ="stateSelect" class="browser-default">
+						<option value="" disabled selected>Choose your option</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+						<option value="3">Option 3</option>
+					  </select>
 				</div>
 				<div class="float">
 					<label>Filter Service</label>
@@ -64,16 +70,16 @@
 				<!--<script type= "text/javascript" src="scripts\d3.js"></script>-->
 					
 					<div id="bubbleWrap">
-						<div id="bubbleMap" style="visibility: hidden;">
+						<div id="bubbleMap">
 							<script type= "text/javascript" src="scripts\bubble.js"></script>
 						</div>
 					</div>
+					<!--
 					<div id="mapWrap">
 						<div id="USMap">
-							<!--US Map Scripts-->
 							<script type= "text/javascript" src="scripts\usmap.js"></script>
 						</div>
-					</div>
+					</div>-->
 					
 				</div>
 				<div class="content"></div>

@@ -30,11 +30,9 @@
 	min-width: 660px;
 }
 
-.filter .steps{
-	border:1px solid black;
+.filter .state{
 	margin-left: 30px;
 	height: 75px;
-	width: 400px;
 	float: left;
 }
 

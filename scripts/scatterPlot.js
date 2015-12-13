@@ -2,7 +2,7 @@
 var outputData;
 //global chart stuff for update functions
 var chart;
-var svg;
+var csvg;
 var cHeight = 600;
 var cWidth = 800;
 
@@ -12,7 +12,7 @@ function getData(){
 // closure function to obtain JSON data
 (function(){
   // get the output.json file
-  d3.json("data/outputFiveStates.json", function(error, dataSet){
+  d3.json("data/output.json", function(error, dataSet){
     if(error) return console.warn(error);
     outputData = dataSet;
     console.log(outputData);
@@ -137,17 +137,17 @@ function drawGraph(){
 		chart.yAxis.axisLabel("Total Cost");
 		chart.yAxis.axisLabelDistance(10);
 		
-		svg = d3.select('#chart svg')
+		csvg = d3.select('#chart svg')
 		//var format = d3.format(",.2f");
 		//d3.selectAll(".tick").text(function(d) { return "$" + format(d); });
 		
 		//svg.attr("width", width)
 		var dataset = myData(0,0);
-		svg.attr("height", cHeight)
+		csvg.attr("height", cHeight)
 			.datum(dataset)
 			.call(chart);
 		
-		svg.append("g")
+		csvg.append("g")
       .attr("class", "nv-axislabel")
 	  .attr("id", "chart-title")
       //.attr("transform", "translate(" + (width/2 - 71) + "," + 15 + ")")
@@ -169,10 +169,10 @@ function drawGraph(){
 function changeScatterData(state,drg){
 	d3.selectAll('.nv-distx').remove();
 	d3.selectAll('.nv-disty').remove();
-	svg.datum(myData(state,drg)).transition().duration(500).call(chart);
+	csvg.datum(myData(state,drg)).transition().duration(500).call(chart);
 	console.log(outputData.serviceTypes[drg]);
 	d3.select('#chart-title').remove();
-	svg.append("g")
+	csvg.append("g")
       .attr("class", "nv-axislabel")
 	  .attr("id", "chart-title")
       //.attr("transform", "translate(" + (width/2 - 71) + "," + 15 + ")")
