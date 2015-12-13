@@ -21,27 +21,37 @@
 	position:relative;
 }
 
+/.filter{
+/	overflow: auto;
+/	width: -moz-calc(100% - 30px);
+/    width: -webkit-calc(100% - 30px);
+/    width: calc(100% - 30px);
+/	max-width: 1600px;
+/	min-width: 660px;
+/	margin-bottom: 10px;
+/}
+
 .filter{
-	overflow: auto;
-	width: -moz-calc(100% - 30px);
-    width: -webkit-calc(100% - 30px);
-    width: calc(100% - 30px);
-	max-width: 1600px;
-	min-width: 660px;
-	margin-bottom: 10px;
+	clear:both
 }
 
-.filter .state{
-	float: right;
+.state{
+	float: left;
 	margin-right: 20px;
+	margin-bottom: 1px;
+	margin-left: 30px;
 }
 
-.filter .service{
-	float: right;
+.cost{
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 1px;
 }
 
-.filter .float{
-	float:right;
+.service{
+	float: left;
+	margin-left: 74px;
+	margin-bottom: 1px;
 }
 
 .visuals {
@@ -56,25 +66,11 @@
 .maps{
 	position:relative;
 	width: 500px;
-	height: 500px;
 	float: left;
 }
 
-#USMap{
-	position:relative;
-}
-
 #bubbleMap{
-	position:relative;
-}
 
-#mapWrap{
-	position:absolute;
-	margin-left: 30px;
-}
-
-#bubbleWrap{
-	position:absolute;
 }
 
 #bubbleGraph{

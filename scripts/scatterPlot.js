@@ -178,7 +178,8 @@ function drawGraph(){
 	  .style("font-weight", "bold")
 	  .style("text-align", "center")
 	  .style("width", "100%")
-      .text(outputData.serviceTypes[0]);
+      //.text(outputData.serviceTypes[0]);
+      .text("Service Cost Graph");
 		
 	
 		nv.utils.windowResize(chart.update);
@@ -203,6 +204,7 @@ function changeScatterData(state,drg){
 	  .style("font-weight", "bold")
 	  .style("text-align", "center")
 	  .style("width", "100%")
-      .text(outputData.serviceTypes[drg]);
+      //.text(outputData.serviceTypes[drg]);
+      .text("Service Cost Graph");
     nv.utils.windowResize(chart.update);
 }

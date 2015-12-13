@@ -44,39 +44,31 @@
 		</div>-->
 
 		<div class="main">
-			<div class="filter">
-				<div class="float">
-				
-					<div class="service">
-						<label>Filter Service</label>
-						  <select id ="serviceSelect" class="browser-default">
-							<option value="" disabled selected>Choose your option</option>
-							<option value="1">Option 1</option>
-							<option value="2">Option 2</option>
-							<option value="3">Option 3</option>
-						  </select>
-					  </div>
-					  
-					  <div class="state">
-						<label>Filter State</label>
-						  <select id ="stateSelect" class="browser-default">
-							<option value="" disabled selected>Choose your option</option>
-							<option value="1">Option 1</option>
-							<option value="2">Option 2</option>
-							<option value="3">Option 3</option>
-					  </select>
-					</div>
-				</div>
-			</div>
 			<div class="visuals">
-
 				<div class ="maps">
 				<!--<script type= "text/javascript" src="scripts\d3.js"></script>-->
-					
-					<div id="bubbleWrap">
-						<div id="bubbleMap">
-							<script type= "text/javascript" src="scripts\bubble.js"></script>
+					<div class="filter">
+						<div class="state">
+							<label>Filter State</label>
+							  <select id ="stateSelect" class="browser-default">
+								<option value="" disabled selected>Choose your option</option>
+								<option value="1">Option 1</option>
+								<option value="2">Option 2</option>
+								<option value="3">Option 3</option>
+						  </select>
 						</div>
+						<div class="cost">
+							<label>Filter Cost Bubbles</label>
+							  <select id ="costSelect" class="browser-default">
+								<option value="" disabled selected>Choose your option</option>
+								<option value="1">Option 1</option>
+								<option value="2">Option 2</option>
+								<option value="3">Option 3</option>
+						  </select>
+						</div>
+					</div>
+					<div id="bubbleMap">
+						<script type= "text/javascript" src="scripts\bubble.js"></script>
 					</div>
 					<!--
 					<div id="mapWrap">
@@ -89,6 +81,15 @@
 				<div class="content"></div>
 				<div class="description"></div>
 				<div class="graph">
+					<div class="service">
+						<label>Filter Service Graph</label>
+						  <select id ="serviceSelect" class="browser-default">
+							<option value="" disabled selected>Choose your option</option>
+							<option value="1">Option 1</option>
+							<option value="2">Option 2</option>
+							<option value="3">Option 3</option>
+						  </select>
+					</div>
 					<div id="bubbleGraph">
 						
 						 
