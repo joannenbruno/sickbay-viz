@@ -1,6 +1,10 @@
 // global data variable to pass JSON
 var outputData;
-
+//global chart stuff for update functions
+var chart;
+var svg;
+var cHeight = 600;
+var cWidth = 800;
 // closure function to obtain JSON data
 (function(){
   // get the output.json file
@@ -15,7 +19,7 @@ var outputData;
 })();
 
 // parses and formats the data for the nvd3.js graph
-function myData(points) {
+function myData(state, drg) {
     // final data array object for graph, array of shapes for graph
     var data = [],
       shapes = ['circle', 'cross', 'triangle-up', 'diamond', 'square'],
@@ -62,14 +66,15 @@ function myData(points) {
 		, size: parseInt(outputData.states[0].drg[0].data[i][10])
       });*/
 	  
-	  for (j = 0; j < outputData.states[0].drg[0].data.length; j++) {
+	  for (j = 0; j < outputData.states[state].drg[drg].data.length; j++) {
         // push into the axis' the pertinent data
         data[i].values.push({
           x: j
-        , y: parseInt(outputData.states[0].drg[0].data[j][10+i])
+        , y: parseInt(outputData.states[state].drg[drg].data[j][10+i])
         // configure the shape of each scatter point.
         //, shape: (Math.random() > 0.95) ? shapes[j % 5] : "circle"
-		, size: parseInt(outputData.states[0].drg[0].data[j][10+i])
+		, size: parseInt(outputData.states[state].drg[drg].data[j][10+i])
+		, nodeData: outputData.states[state].drg[drg].data[j]
         });
       }
 	}
@@ -81,7 +86,7 @@ function myData(points) {
 // disgusting hack to allow json to load before graph is rendered
 function drawGraph(){
 	nv.addGraph(function() {
-		var chart = nv.models.scatterChart()
+		 chart = nv.models.scatterChart()
 			.showDistX(true)
 			.showDistY(true)
 			.useVoronoi(true)
@@ -90,6 +95,8 @@ function drawGraph(){
 			.showLegend(true)
 			;
 		
+		chart.legend.margin({"bottom":10, "right":-25});
+		chart.legend.expanded = true;
 		/*chart.color(function (d, i) {
 			var colors = d3.scale.category20().range().slice(10);
 			console.log(colors);
@@ -126,31 +133,48 @@ function drawGraph(){
 		chart.yAxis.axisLabel("Total Cost");
 		chart.yAxis.axisLabelDistance(10);
 		
-		var svg = d3.select('#chart svg')
+		svg = d3.select('#chart svg')
 		//var format = d3.format(",.2f");
 		//d3.selectAll(".tick").text(function(d) { return "$" + format(d); });
 		
-		var height = 600;
-		var width = 800;
 		//svg.attr("width", width)
-		svg.attr("height", height)
-			.datum(myData(40))
+		var dataset = myData(0,0);
+		svg.attr("height", cHeight)
+			.datum(dataset)
 			.call(chart);
-
-			
+		
 		svg.append("g")
       .attr("class", "nv-axislabel")
+	  .attr("id", "chart-title")
       //.attr("transform", "translate(" + (width/2 - 71) + "," + 15 + ")")
-      .attr("transform", "translate("+ 75 + "," + 15 + ")")
+      .attr("transform", "translate("+ 75 + "," + 20 + ")")
     .append("text")
 	  .style("font-weight", "bold")
 	  .style("text-align", "center")
 	  .style("width", "100%")
-      .text("Hospital Service Cost Graph");
+      .text(outputData.serviceTypes[0]);
 		
+	
 		nv.utils.windowResize(chart.update);
 		
 		console.log("Generated chart");
 		return chart;
 	});
+}
+
+function changeScatterData(state,drg){
+	svg.datum(myData(state,drg)).transition().duration(500).call(chart);
+	console.log(outputData.serviceTypes[drg]);
+	d3.select('#chart-title').remove();
+	svg.append("g")
+      .attr("class", "nv-axislabel")
+	  .attr("id", "chart-title")
+      //.attr("transform", "translate(" + (width/2 - 71) + "," + 15 + ")")
+      .attr("transform", "translate("+ 75 + "," + 20 + ")")
+    .append("text")
+	  .style("font-weight", "bold")
+	  .style("text-align", "center")
+	  .style("width", "100%")
+      .text(outputData.serviceTypes[drg]);
+    nv.utils.windowResize(chart.update);
 }

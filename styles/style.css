@@ -72,7 +72,7 @@
     width: calc(100% - 30px);
 	clear: both;
 	max-width: 1600px;
-	min-width: 1000px;
+	min-width: 1030px;
 }
 
 .maps{
@@ -110,9 +110,9 @@
 
 .graph{
 	float:left;
-	width: -moz-calc(100% - 510px);
-    width: -webkit-calc(100% - 510px);
-    width: calc(100% - 510px);
+	width: -moz-calc(100% - 500px);
+    width: -webkit-calc(100% - 500px);
+    width: calc(100% - 500px);
 }
 
 @media (max-width: 1000px) {
