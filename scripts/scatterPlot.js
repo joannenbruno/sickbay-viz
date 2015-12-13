@@ -33,26 +33,30 @@ function myData(state, drg) {
 
     for (var i = 0; i < 3; i++) {
 		var priceElement;
+		var elementKey;
 		if(i==0){
+			elementKey = "Total Cost";
 			data.push({
 				// set key as service type for visual output
 				//key: 'Group: ' + outputData.serviceTypes[i].toLowerCase(),
 				//key: outputData.states[0].drg[0].type,
-				key: "Total Cost",
+				key: elementKey,
 				values: []
 			});
 			priceElement = 10;
 		}
 		else if(i==1){
+			elementKey = "Medicare Coverage";
 			data.push({
-				key: "Medicare Coverage",
+				key: elementKey,
 				values: []
 			});
 			priceElement = 11;
 		}
 		else{
+			elementKey = "Max Medicare Coverage";
 			data.push({
-				key: "Max Medi. Coverage",
+				key: elementKey,
 				disabled: true,
 				values: []
 			});
@@ -74,12 +78,19 @@ function myData(state, drg) {
         //, shape: (Math.random() > 0.95) ? shapes[j % 5] : "circle"
 		, size: parseInt(outputData.states[state].drg[drg].data[j][priceElement])
 		, nodeData: outputData.states[state].drg[drg].data[j]
+		, parentKey: elementKey
         });
       }
 	}
 
     console.log("DEBUG: Returned data object from myData method");
     return data;
+}
+
+//capitalizes first letter of each word
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 
 // disgusting hack to allow json to load before graph is rendered
@@ -94,9 +105,10 @@ function drawGraph(){
 			.showLegend(true)
 			;
 		
-		chart.legend.margin({"bottom":10, "right":0});
-		chart.legend.expanded = true;
-		chart.legend.rightAlign = true;
+		chart.legend.margin({"bottom":10, "right":-20});
+		chart.legend.maxKeyLength(30);
+		//chart.legend.expanded = true;
+		//chart.legend.rightAlign = true;
 		/*chart.color(function (d, i) {
 			var colors = d3.scale.category20().range().slice(10);
 			console.log(colors);
@@ -106,7 +118,8 @@ function drawGraph(){
 		
 		chart.color(function (d, i) {
 			//var colors = d3.scale.category10().range();
-			var colors = ["#D32F2F", "#0097A7", "#00E676"];
+			var colors = ["#D32F2F", "#0097A7", "#00E676"];//rgb
+			//var colors = ["#D32F2F", "#0097A7", "#651FFF"];//rgp
 			//console.log(colors);
 			return colors[i];
 			//return "#00E676";//green
@@ -119,8 +132,20 @@ function drawGraph(){
 
 		// configure how the tooltip looks.
 		chart.tooltip.contentGenerator(function (key) {
-			console.log(JSON.stringify(key));
-		  return '<p><strong>' + JSON.stringify(key.point.size) + '</strong></p>';
+			//console.log(JSON.stringify(key));
+			var tooltipHTML;
+			tooltipHTML = '<div>' + key.point.nodeData[0].substring(6) + '</div>';
+			//tooltipHTML += '<div>' + key.point.nodeData[2] + '</div>';
+			//tooltipHTML += '<div>' + key.point.nodeData[4] + ', ' + key.point.nodeData[5] + '</div>';
+			var name = toTitleCase(key.point.nodeData[2].toLowerCase());
+			var city = toTitleCase(key.point.nodeData[4].toLowerCase());
+			tooltipHTML += '<div>' + name + ' - ' + city + ', ' + key.point.nodeData[5] + '</div>';
+			tooltipHTML += '<div>' + key.point.parentKey + ': $' + key.point.size + '</div>';
+			/*tooltipHTML += '<div>Total service cost:       $' + key.point.nodeData[10] + '</div>';
+			tooltipHTML += '<div>Medicare will cover:      $' + key.point.nodeData[11] + '</div>';
+			tooltipHTML += '<div>Medicare can cover up to: $' + key.point.nodeData[9] + '</div>';*/
+
+			return tooltipHTML;
 		  //return '<h3>' + key + '</h3>';
 		});
 		
@@ -147,6 +172,7 @@ function drawGraph(){
       .attr("class", "nv-axislabel")
 	  .attr("id", "chart-title")
       //.attr("transform", "translate(" + (width/2 - 71) + "," + 15 + ")")
+      //.attr("transform", "translate("+ 75 + "," + 20 + ")")
       .attr("transform", "translate("+ 75 + "," + 20 + ")")
     .append("text")
 	  .style("font-weight", "bold")
