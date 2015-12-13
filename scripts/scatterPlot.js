@@ -1,26 +1,10 @@
 // global data variable to pass JSON
-var outputData;
+
 //global chart stuff for update functions
 var chart;
 var csvg;
 var cHeight = 600;
 var cWidth = 800;
-
-function getData(){
-	return outputData;
-}
-// closure function to obtain JSON data
-(function(){
-  // get the output.json file
-  d3.json("data/output.json", function(error, dataSet){
-    if(error) return console.warn(error);
-    outputData = dataSet;
-    console.log(outputData);
-	$( document ).ready(function() {
-		drawGraph();
-	});
-  });
-})();
 
 // parses and formats the data for the nvd3.js graph
 function myData(state, drg) {

@@ -1,4 +1,21 @@
-window.onload = function(){
+//dataset
+var outputData;
+
+// closure function to obtain JSON data
+(function(){
+  // get the output.json file
+  d3.json("data/output.json", function(error, dataSet){
+    if(error) return console.warn(error);
+    outputData = dataSet;
+    console.log(outputData);
+	$( document ).ready(function() {
+		drawGraph();
+		populateServiceDropdown();
+	});
+  });
+})();
+
+function populateServiceDropdown(){
 	//init bubble/map state
 	/*var Bubble = document.getElementById("bubbleMap")
 	Bubble.style.visibility = "hidden";
@@ -9,10 +26,10 @@ window.onload = function(){
 	
 	//service selector
 	var service = '';
-	var dataset = getData();
+	//var dataset = getData();
 	//service = '<option value="" disabled selected>Select a service</option>'
-	for(var i=0; i<dataset.serviceTypes.length; i++){
-		service+='<option value="'+i+'">'+dataset.serviceTypes[i]+'</option>';
+	for(var i=0; i<outputData.serviceTypes.length; i++){
+		service+='<option value="'+i+'">'+outputData.serviceTypes[i]+'</option>';
 	}
 	$("#serviceSelect").html(service);
 	$("#serviceSelect").change(function () {
