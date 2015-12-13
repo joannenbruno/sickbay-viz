@@ -31,7 +31,8 @@ function myData(state, drg) {
 		}
 	}*/
 
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 3; i++) {
+		var priceElement;
 		if(i==0){
 			data.push({
 				// set key as service type for visual output
@@ -40,12 +41,22 @@ function myData(state, drg) {
 				key: "Total Cost",
 				values: []
 			});
+			priceElement = 10;
 		}
-		else{
+		else if(i==1){
 			data.push({
 				key: "Medicare Coverage",
 				values: []
 			});
+			priceElement = 11;
+		}
+		else{
+			data.push({
+				key: "Max Medi. Coverage",
+				disabled: true,
+				values: []
+			});
+			priceElement = 9;
 		}
 	  
 	 /* data[i].values.push({
@@ -58,10 +69,10 @@ function myData(state, drg) {
         // push into the axis' the pertinent data
         data[i].values.push({
           x: j
-        , y: parseInt(outputData.states[state].drg[drg].data[j][10+i])
+        , y: parseInt(outputData.states[state].drg[drg].data[j][priceElement])
         // configure the shape of each scatter point.
         //, shape: (Math.random() > 0.95) ? shapes[j % 5] : "circle"
-		, size: parseInt(outputData.states[state].drg[drg].data[j][10+i])
+		, size: parseInt(outputData.states[state].drg[drg].data[j][priceElement])
 		, nodeData: outputData.states[state].drg[drg].data[j]
         });
       }
@@ -83,8 +94,9 @@ function drawGraph(){
 			.showLegend(true)
 			;
 		
-		chart.legend.margin({"bottom":10, "right":-25});
+		chart.legend.margin({"bottom":10, "right":0});
 		chart.legend.expanded = true;
+		chart.legend.rightAlign = true;
 		/*chart.color(function (d, i) {
 			var colors = d3.scale.category20().range().slice(10);
 			console.log(colors);
@@ -94,7 +106,7 @@ function drawGraph(){
 		
 		chart.color(function (d, i) {
 			//var colors = d3.scale.category10().range();
-			var colors = ["#D32F2F", "#0097A7"];
+			var colors = ["#D32F2F", "#0097A7", "#00E676"];
 			//console.log(colors);
 			return colors[i];
 			//return "#00E676";//green
