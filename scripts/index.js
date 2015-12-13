@@ -33,7 +33,7 @@ function populateServiceDropdown(){
 	}
 	$("#serviceSelect").html(service);
 	$("#serviceSelect").change(function () {
-		  changeScatterData(0,$( "#serviceSelect option:selected" ).val());
+		  changeScatterData($( "#stateSelect option:selected" ).val(),$( "#serviceSelect option:selected" ).val());
 	})
 	//state
 	
@@ -48,9 +48,7 @@ $(document).ready(function($){
 	$("#stateSelect").html(states);
 	
 	$("#stateSelect").change(function () {
-		$( "#stateSelect option:selected" ).each(function() {
-			changeScatterData($( this ).val(),$( "#serviceSelect option:selected" ).val());
-		});
+		changeScatterData($( "#stateSelect option:selected" ).val(),$( "#serviceSelect option:selected" ).val());
 	})
 });
 
