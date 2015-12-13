@@ -5,8 +5,24 @@ window.onload = function(){
 	var Map = document.getElementById("USMap")
 	Map.style.visibility = "visible";
 	Map.style.zIndex = "1";
-
+	
+	//service selector
+	
+	var service;
+	service = '<option value="" disabled selected>Select a service</option>'
+	for(var i=0; i<outputData.serviceTypes.length; i++){
+		service+='<option value="'+i+'">'+outputData.serviceTypes[i]+'</option>'
+	}
+	$("#serviceSelect").html(service);
+	
+	$("#serviceSelect").change(function () {
+		$( "#serviceSelect option:selected" ).each(function() {
+		  changeScatterData(0,$( this ).val());
+		});
+	}).change();
 }
+
+
 
 function show(map){
 	if(map == 'bubble'){

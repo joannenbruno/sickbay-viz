@@ -38,32 +38,8 @@
 	float: left;
 }
 
-.filter .search{
-	border:1px solid black;
-	margin-left: 30px;
-	height: 25px;
-	width: 200px;
-}
-
 .filter .float{
 	float:right;
-	padding-top: 18px;
-}
-
-.filter .button{
-	border:1px solid black;
-	margin: 5px 0px 0px 30px;
-	height: 25px;
-	width: 50px;
-	float: right;
-}
-
-.filter .overall{
-
-}
-
-.filter .medicare{
-
 }
 
 .visuals {
