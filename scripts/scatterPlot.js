@@ -134,13 +134,15 @@ function drawGraph(){
 		chart.tooltip.contentGenerator(function (key) {
 			//console.log(JSON.stringify(key));
 			var tooltipHTML;
-			tooltipHTML = '<div>' + key.point.nodeData[0].substring(6) + '</div>';
+			tooltipHTML = '<div id="graphTooltip" style="position:absolute;display:block;z-index:10000;border:2px solid black;background-color:rgba(0,0,0,0.8);margin:auto;padding:3px 5px 3px 5px;color:white;font-size:12px;font-family:arial;border-radius: 5px;vertical-align: middle;text-align: center;min-width:50px;overflow:auto;">';
+			tooltipHTML += '<div>' + key.point.nodeData[0].substring(6) + '</div>';
 			//tooltipHTML += '<div>' + key.point.nodeData[2] + '</div>';
 			//tooltipHTML += '<div>' + key.point.nodeData[4] + ', ' + key.point.nodeData[5] + '</div>';
 			var name = toTitleCase(key.point.nodeData[2].toLowerCase());
 			var city = toTitleCase(key.point.nodeData[4].toLowerCase());
 			tooltipHTML += '<div>' + name + ' - ' + city + ', ' + key.point.nodeData[5] + '</div>';
 			tooltipHTML += '<div>' + key.point.parentKey + ': $' + key.point.size + '</div>';
+			tooltipHTML += '</div>';
 			/*tooltipHTML += '<div>Total service cost:       $' + key.point.nodeData[10] + '</div>';
 			tooltipHTML += '<div>Medicare will cover:      $' + key.point.nodeData[11] + '</div>';
 			tooltipHTML += '<div>Medicare can cover up to: $' + key.point.nodeData[9] + '</div>';*/
