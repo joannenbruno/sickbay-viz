@@ -57,14 +57,14 @@ function changeBubbleData(state, type) {
           ,size : parseInt(outputData.states[state].drg[i].avgTotalCost)
           });
     }
-  } else if (type == "Average Medicare Cost") {
+  } else if (type == "Average Medicare Coverage") {
     for(var i = 0; i < outputData.states[state].drg.length; i++) {
           bubbleData.children.push({
           name : outputData.states[state].drg[i].type
           ,size : parseInt(outputData.states[state].drg[i].avgMedicareCost)
           });
     }
-  } else if (type == "Max Medicare Coverage") {
+  } else if (type == "Average Max Medicare Coverage") {
     for(var i = 0; i < outputData.states[state].drg.length; i++) {
           bubbleData.children.push({
           name : outputData.states[state].drg[i].type

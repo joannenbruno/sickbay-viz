@@ -52,7 +52,7 @@ $(document).ready(function($){
 	$("#stateSelect").html(states);
 
   // cost list init
-  var costList = ["Average Total Cost", "Average Medicare Cost", "Max Medicare Coverage"];
+  var costList = ["Average Total Cost", "Average Medicare Coverage", "Average Max Medicare Coverage"];
   var costs = '';
   for (var i = 0; i < costList.length; i++) {
     costs += '<option value"' + i + '">' + costList[i] + '</option>';
