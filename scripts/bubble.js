@@ -194,7 +194,7 @@ function getSize(d) {
   if(scale > 15) scale = 15;
   if(scale < 9) scale = 9;
   d.scale = scale;
-  console.log(d.className + " : " + scale);
+  //console.log(d.className + " : " + scale);
 }
 
 // Returns a flattened hierarchy containing all leaf nodes under the root.

@@ -3,6 +3,12 @@
 	padding: 0;
 }
 
+#container{
+min-height: 100%;
+position: relative;
+min-width: 1120px;
+}
+
 .brand-logo .name{
 	color: white;
 	font-weight: bold;
@@ -22,6 +28,10 @@
 	min-width: 1120px;
 }
 
+.aboutHead{
+	min-width: 1150px !important;
+}
+
 .healthDescription{
 	font-weight: normal;
 }
@@ -29,6 +39,13 @@
 .inside{
 	margin: 0px auto;
 	max-width: 1400px;
+}
+
+#about-container{
+	padding-top: 30px;
+	margin: 10px auto;
+	max-width: 1500px;
+	min-width: 600px;
 }
 
 .main{
@@ -153,11 +170,6 @@ overflow:auto !important;
 	padding: 10px 10px 10px 10px;
 }
 
-/*US Map SVG Positioning*/
-#container{
-min-height: 100%;
-position: relative;
-}
 /*Sticky Footer*/
 .page-footer{
 	width: 100%;
@@ -166,7 +178,11 @@ position: relative;
 	bottom: 0px;
 }
 footer.page-footer{
-	padding-top:15px !important;
+	padding-top:10px !important;
+}
+
+.aboutFooter .container{
+	width: 700px;
 }
 
 .footerContent{
