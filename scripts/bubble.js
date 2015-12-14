@@ -152,7 +152,7 @@ function bubbleChart(state, type) {
 
   node.append("text")
       .style("font-size", "1px")
-      .text(function(d) { return d.className.substring(0, d.r / 3.2); })
+      .text(function(d) { return d.className.substring(0, d.r / 3); })
       .each(getSize)
       .attr("dy", ".3em")
       .style("text-anchor", "middle")
@@ -191,6 +191,7 @@ function getSize(d) {
       cbbox = this.parentNode.getBBox(),
       scale = Math.min(cbbox.width/bbox.width, cbbox.height/bbox.height);
   d.scale = scale;
+  console.log(d.className + " : " + scale);
 }
 
 // Returns a flattened hierarchy containing all leaf nodes under the root.
