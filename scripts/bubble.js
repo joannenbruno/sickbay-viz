@@ -11,8 +11,10 @@ var Bsvg = d3.select("#bubbleMap").append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
     .attr("class", "bubble");
+	
+//var Bsvg;
 
-var Btooltip = d3.select("body")
+/*var Btooltip = d3.select("body")
     .append("div")
     .style("position", "absolute")
     .style("z-index", "10")
@@ -22,7 +24,9 @@ var Btooltip = d3.select("body")
     .style("background-color", "rgba(0, 0, 0, 0.75)")
     .style("border-radius", "6px")
     .style("font", "12px sans-serif")
-    .text("tooltip");
+    .text("tooltip");*/
+	
+var Btooltip;
 
 // functions to format data for Bubble Chart friendly JSON
 // function myDataBubble() {
@@ -40,11 +44,14 @@ var Btooltip = d3.select("body")
 // }
 
 function changeBubbleData(state, type) {
+	$("#bubbleMap svg").empty();
+	console.log(Bsvg);
   var bubbleData = {};
   bubbleData.children = [];
-
+console.log(type);
   // choose between type specified in drop-down
   if (type == "Average Total Cost") {
+	  console.log(type);
     for(var i = 0; i < outputData.states[state].drg.length; i++) {
           bubbleData.children.push({
           name : outputData.states[state].drg[i].type
@@ -73,6 +80,24 @@ function changeBubbleData(state, type) {
 
 // viz-display function
 function bubbleChart(state, type) {
+	
+	/*Bsvg = d3.select("#bubbleMap").append("svg")
+    .attr("width", diameter)
+    .attr("height", diameter)
+    .attr("class", "bubble");*/
+	
+	Btooltip = d3.select("body")
+    .append("div")
+    .style("position", "absolute")
+    .style("z-index", "10")
+    .style("visibility", "hidden")
+    .style("color", "white")
+    .style("padding", "8px")
+    .style("background-color", "rgba(0, 0, 0, 0.75)")
+    .style("border-radius", "6px")
+    .style("font", "12px sans-serif")
+    .text("tooltip");
+	
   // json data for bubble chart
   jsonNodes = changeBubbleData(state, type);
   console.log(jsonNodes);

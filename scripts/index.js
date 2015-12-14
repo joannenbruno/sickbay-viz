@@ -64,6 +64,9 @@ $(document).ready(function($){
     bubbleChart($( "#stateSelect option:selected" ).val(), $("#costSelect option:selected").val());
 	changeScatterData($( "#stateSelect option:selected" ).val(),$( "#serviceSelect option:selected" ).val());
   });
+  $("#costSelect").change(function () {
+    bubbleChart($( "#stateSelect option:selected" ).val(), $("#costSelect option:selected").val());
+  });
 });
 
 //function for hiding and showing map/bubblegraph
