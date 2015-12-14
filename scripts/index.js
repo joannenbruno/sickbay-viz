@@ -13,7 +13,7 @@ var outputData;
 		populateServiceDropdown();
 
     // draw initial chart w/ default vals (AL and Average Total Cost)
-    // bubbleChart(0, "Average Total Cost");
+    bubbleChart(0, "Average Total Cost");
 	});
   });
 })();
