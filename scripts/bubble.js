@@ -24,34 +24,55 @@ var Btooltip = d3.select("body")
     .style("font", "12px sans-serif")
     .text("tooltip");
 
-// function to format data for Bubble Chart friendly JSON
-function myDataBubble() {
+// functions to format data for Bubble Chart friendly JSON
+// function myDataBubble() {
+//   var bubbleData = {};
+//   bubbleData.children = [];
+//
+//   for(var i = 0; i < outputData.states.length; i++) {
+//         bubbleData.children.push({
+//         name : outputData.states[i].stateName
+//         ,size : parseInt(outputData.states[i].avgTotalCost)
+//         });
+//   }
+//
+//   return bubbleData;
+// }
+
+function changeBubbleData(state, type) {
   var bubbleData = {};
   bubbleData.children = [];
 
-  for(var i = 0; i < outputData.states.length; i++) {
-        bubbleData.children.push({
-        name : outputData.states[i].stateName
-        ,size : parseInt(outputData.states[i].avgTotalCost)
-        });
+  // choose between type specified in drop-down
+  if (type == "Average Total Cost") {
+    for(var i = 0; i < outputData.states[state].drg.length; i++) {
+          bubbleData.children.push({
+          name : outputData.states[state].drg[i].type
+          ,size : parseInt(outputData.states[state].drg[i].avgTotalCost)
+          });
+    }
+  } else if (type == "Average Medicare Cost") {
+    for(var i = 0; i < outputData.states[state].drg.length; i++) {
+          bubbleData.children.push({
+          name : outputData.states[state].drg[i].type
+          ,size : parseInt(outputData.states[state].drg[i].avgMedicareCost)
+          });
+    }
   }
 
+  console.log(bubbleData);
   return bubbleData;
 }
 
 // viz-display function
-function bubbleChart() {
-
-  // json data for bubbl chart
-  jsonNodes = myDataBubble();
+function bubbleChart(state, type) {
+  // json data for bubble chart
+  jsonNodes = changeBubbleData(state, type);
   console.log(jsonNodes);
 
   // nodes data, built from bubble.nodes(classes()) functions
   var nodes = bubble.nodes(classes(jsonNodes));
   console.log(nodes);
-   //
-  //  var stringified = JSON.stringify(myDataBubble(), null, 4);
-  //  console.log(stringified);
 
   var node = Bsvg.selectAll(".node")
       .data((nodes) //NOTE**classes(root) is a member function of this file that sets up the data file they want to graph, this program is then structured around that json structure
@@ -63,7 +84,7 @@ function bubbleChart() {
 	  .style("fill", function(d) { return color(d.packageName); })
 	  	.on("mouseover", function(d,i)
 	{
-		d3.select(this).style("fill", "gold");
+		d3.select(this).style("fill", "#D32F2F");
 		showToolTip("State: "+d.className+"<br> Average Cost: $"+d.value+" ", d3.event.pageX+15 ,d3.event.pageY-55,true);
 		//console.log(d3.mouse(this));
 	})

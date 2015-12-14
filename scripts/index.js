@@ -11,7 +11,9 @@ var outputData;
 	$( document ).ready(function() {
 		drawGraph();
 		populateServiceDropdown();
-    bubbleChart();
+
+    // draw initial chart w/ default vals (AL and Average Total Cost)
+    bubbleChart(0, "Average Total Cost");
 	});
   });
 })();
@@ -51,7 +53,20 @@ $(document).ready(function($){
 
 	$("#stateSelect").change(function () {
 		changeScatterData($( "#stateSelect option:selected" ).val(),$( "#serviceSelect option:selected" ).val());
-	})
+  });
+
+  // cost list init
+  var costList = ["Average Total Cost", "Average Medicare Cost"];
+  var costs = '';
+  for (var i = 0; i < costList.length; i++) {
+    costs += '<option value"' + i + '">' + costList[i] + '</option>';
+  }
+  $("#costSelect").html(costs);
+
+  // pass state value from state selector to the bubble chart
+  $("#stateSelect").change(function () {
+    bubbleChart($( "#stateSelect option:selected" ).val(), $("#costSelect option:selected").val());
+  });
 });
 
 //function for hiding and showing map/bubblegraph
