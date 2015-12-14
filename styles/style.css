@@ -43,6 +43,24 @@
 	clear:both
 }
 
+.nvtooltip{
+position:absolute !important;
+display:block !important;
+z-index:10000 !important;
+border:2px solid black !important;
+background-color:rgba(0,0,0,0.8) !important;
+margin:auto !important;
+padding:3px 5px 3px 5px !important;
+color:white !important;
+font-size:12px !important;
+font-family:arial !important;
+border-radius: 5px !important;
+vertical-align: middle !important;
+text-align: center !important;
+min-width:50px !important;
+overflow:auto !important; 
+}
+
 .state{
 	float: left;
 	margin-right: 20px;
