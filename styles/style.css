@@ -181,6 +181,10 @@ footer.page-footer{
 	padding-top:10px !important;
 }
 
+#mainFooter.page-footer{
+	padding-top:14px !important;
+}
+
 .aboutFooter .container{
 	width: 700px;
 }
