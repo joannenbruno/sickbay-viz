@@ -13,7 +13,7 @@ var outputData;
 		populateServiceDropdown();
 
     // draw initial chart w/ default vals (AL and Average Total Cost)
-    bubbleChart(0, "Average Total Cost");
+    // bubbleChart(0, "Average Total Cost");
 	});
   });
 })();
@@ -56,7 +56,7 @@ $(document).ready(function($){
   });
 
   // cost list init
-  var costList = ["Average Total Cost", "Average Medicare Cost"];
+  var costList = ["Average Total Cost", "Average Medicare Cost", "Max Medicare Coverage"];
   var costs = '';
   for (var i = 0; i < costList.length; i++) {
     costs += '<option value"' + i + '">' + costList[i] + '</option>';
