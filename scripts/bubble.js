@@ -190,8 +190,8 @@ function getSize(d) {
   var bbox = this.getBBox(),
       cbbox = this.parentNode.getBBox(),
       scale = Math.min(cbbox.width/bbox.width, cbbox.height/bbox.height);
-  if(scale > 20) scale = 20;
-  if(scale < 7) scale = 7;
+  if(scale > 15) scale = 15;
+  if(scale < 9) scale = 9;
   d.scale = scale;
   console.log(d.className + " : " + scale);
 }
