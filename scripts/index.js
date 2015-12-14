@@ -51,10 +51,6 @@ $(document).ready(function($){
 	}
 	$("#stateSelect").html(states);
 
-	$("#stateSelect").change(function () {
-		changeScatterData($( "#stateSelect option:selected" ).val(),$( "#serviceSelect option:selected" ).val());
-  });
-
   // cost list init
   var costList = ["Average Total Cost", "Average Medicare Cost", "Max Medicare Coverage"];
   var costs = '';
@@ -66,6 +62,7 @@ $(document).ready(function($){
   // pass state value from state selector to the bubble chart
   $("#stateSelect").change(function () {
     bubbleChart($( "#stateSelect option:selected" ).val(), $("#costSelect option:selected").val());
+	changeScatterData($( "#stateSelect option:selected" ).val(),$( "#serviceSelect option:selected" ).val());
   });
 });
 
