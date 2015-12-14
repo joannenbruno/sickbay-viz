@@ -47,13 +47,10 @@ var Btooltip;
 
 function changeBubbleData(state, type) {
 	$("#bubbleMap svg").empty();
-	console.log(Bsvg);
   var bubbleData = {};
   bubbleData.children = [];
-console.log(type);
   // choose between type specified in drop-down
   if (type == "Average Total Cost") {
-	  console.log(type);
     for(var i = 0; i < outputData.states[state].drg.length; i++) {
           bubbleData.children.push({
           name : outputData.states[state].drg[i].type
@@ -76,7 +73,7 @@ console.log(type);
     }
   }
 
-  console.log(bubbleData);
+  //console.log(bubbleData);
   return bubbleData;
 }
 
@@ -102,18 +99,26 @@ function bubbleChart(state, type) {
 	
   // json data for bubble chart
   jsonNodes = changeBubbleData(state, type);
-  console.log(jsonNodes);
+ // console.log(jsonNodes);
 
   // nodes data, built from bubble.nodes(classes()) functions
   var nodes = bubble.nodes(classes(jsonNodes));
-  console.log(nodes);
-
+  //console.log(nodes);
+  
   var node = Bsvg.selectAll(".node")
       .data((nodes) //NOTE**classes(root) is a member function of this file that sets up the data file they want to graph, this program is then structured around that json structure
       .filter(function(d) { return !d.children; }))
       .enter().append("g")
       .attr("class", "node")
       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+	  //future: change color of currently selected service
+	  /*.style("fill", function(d)  {console.log($( "#serviceSelect option:selected" ).text() + " ==? " + d.className);
+									if($( "#serviceSelect option:selected" ).text() == d.className) return "#FFFFFF";
+									else return chartColors[d.value % chartColors.length];} )
+	  .style("stroke", function(d) {console.log($( "#serviceSelect option:selected" ).text() + " ==? " + d.className);
+									if($( "#serviceSelect option:selected" ).text() == d.className) return "#000000";
+									else return chartDarkColors[d.value % chartDarkColors.length];} )
+		*/
 	  .style("fill", function(d) {return chartColors[d.value % chartColors.length];} )
 	  .style("stroke", function(d) {return chartDarkColors[d.value % chartDarkColors.length];} )
 	  .style("stroke-width", 1.5)

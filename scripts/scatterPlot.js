@@ -13,7 +13,7 @@ function myData(state, drg) {
       shapes = ['circle', 'cross', 'triangle-up', 'diamond', 'square'],
       random = d3.random.normal();
 
-	console.log(outputData);
+	//console.log(outputData);
 	
 	/*for (i = 0; i < 5; i++) {
 		data.push({
@@ -195,6 +195,6 @@ function changeScatterData(state,drg){
 	d3.selectAll('.nv-distx').remove();
 	d3.selectAll('.nv-disty').remove();
 	csvg.datum(myData(state,drg)).transition().duration(500).call(chart);
-	console.log(outputData.serviceTypes[drg]);
+	//console.log(outputData.serviceTypes[drg]);
     nv.utils.windowResize(chart.update);
 }
