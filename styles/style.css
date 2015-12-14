@@ -28,12 +28,18 @@ min-width: 1120px;
 }
 
 .nav-wrapper{
-	min-width: 1120px;
+	min-width: 1255px;
 }
 
 .aboutHead{
-	min-width: 1150px !important;
+	min-width: 1265px !important;
 }
+
+/@media (max-width: 1255px) {
+ / .healthDescription{
+ /   display:none;
+ / }
+/}
 
 .healthDescription{
 	font-weight: normal;
@@ -49,7 +55,7 @@ min-width: 1120px;
 	margin: 10px auto;
 	max-width: 1500px;
 	min-width: 728px;
-	height: 700px;
+	height: 715px;
 }
 
 
