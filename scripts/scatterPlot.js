@@ -166,8 +166,8 @@ function drawGraph(){
 		
 		//svg.attr("width", width)
 		var dataset = myData(0,0);
-		csvg.attr("height", cHeight)
-			.datum(dataset)
+		//csvg.attr("height", cHeight)
+			csvg.datum(dataset)
 			.call(chart);
 		
 		csvg.append("g")

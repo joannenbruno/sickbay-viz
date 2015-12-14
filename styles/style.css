@@ -4,9 +4,12 @@
 }
 
 #container{
-min-height: 100%;
 position: relative;
 min-width: 1120px;
+}
+
+.mainContainer{
+	height: 700px !important;
 }
 
 .brand-logo .name{
@@ -122,13 +125,20 @@ overflow:auto !important;
 	float: left;
 }
 
-#bubbleMap{
-
-}
 
 #bubbleGraph{
 	height:600px;
 	width:100%;
+}
+
+@media (max-height: 833px) {
+  #bubbleGraph{
+    height: 500px;
+  }
+}
+
+#chart{
+	height: 100%
 }
 
 .nv-axislabel{
@@ -174,8 +184,8 @@ overflow:auto !important;
 .page-footer{
 	width: 100%;
 	height: 50px;
-	position: absolute;
 	bottom: 0px;
+	position: fixed;
 }
 footer.page-footer{
 	padding-top:10px !important;
@@ -193,6 +203,12 @@ footer.page-footer{
 	padding-left: 15px;
 }
 
+body, html{
+height:100vh;
+margin: 0;
+padding: 0;
+}
+
 #footer{
 	margin: 0px auto;
 	max-width: 1500px;
@@ -205,6 +221,19 @@ footer.page-footer{
 }
 
 .aboutFooter{
-	height: 250px;
+	height: 165px;
 	color: white;
+}
+
+.footerRow1{
+	float: left;
+}
+
+.footerRow2{
+	float: right;
+}
+
+.footerTable{
+	clear:both;
+	padding-left: 30px;
 }
