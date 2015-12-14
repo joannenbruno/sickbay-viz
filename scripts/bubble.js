@@ -143,9 +143,9 @@ function bubbleChart(state, type) {
 		showToolTip(" ",0,0,false);
 	});
 
-
-  node.append("title")
-      .text(function(d) { return d.className + ": " + format(d.value); });
+	//we have a tooltip so dont need this
+  /*node.append("title")
+      .text(function(d) { return d.className + ": " + format(d.value); });*/
 
   node.append("circle")
         .attr("r", function(d) { return d.r; });
@@ -190,6 +190,7 @@ function getSize(d) {
   var bbox = this.getBBox(),
       cbbox = this.parentNode.getBBox(),
       scale = Math.min(cbbox.width/bbox.width, cbbox.height/bbox.height);
+//silly hack for chrome since this tool seems to want to size fonts too small or too large on it
   if(scale > 15) scale = 15;
   if(scale < 9) scale = 9;
   d.scale = scale;
