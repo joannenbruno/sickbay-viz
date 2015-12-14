@@ -62,13 +62,14 @@ function download(formatted) {
 		var drglength = reducedData.serviceTypes.length; //define lengths before for loops to reduce run time so it doesn't have to recalculate each time
 		for (var k=0; k < numberOfStates; k++) {
 			//constructing the state drg array model
-			reducedData.states[k] = {stateName : states[k], avgTotalCost : '', avgMedicareCost : '', drg:[]}
+			reducedData.states[k] = {stateName : states[k], avgTotalCost : '', avgMedicareCost : '', avgMaxMedicareCost : '', drg:[]}
 			for(var i = 0; i < reducedData.serviceTypes.length; i++){
-				reducedData.states[k].drg[i] = {type : '', avgTotalCost : '', avgMedicareCost : '', data:[]}
+				reducedData.states[k].drg[i] = {type : '', avgTotalCost : '', avgMedicareCost : '', avgMaxMedicareCost : '', data:[]}
 				reducedData.states[k].drg[i].type = reducedData.serviceTypes[i];
 			}
 			var total_cost=0;
 			var total_medicarepayment=0;
+			var total_maxmedicarepayment=0;
 			var total_elements=0;
 			for (var i=0,  tot=Data.data.length; i < tot; i++) {
 				//sort into it's state array
@@ -81,6 +82,7 @@ function download(formatted) {
 							reducedData.states[k].drg[j].data.push(Data.data[i].subarray(8));//filtered out 8 elements
 							total_cost+=parseInt(Data.data[i][18]);
 							total_medicarepayment+=parseInt(Data.data[i][19]);
+							total_maxmedicarepayment+=parseInt(Data.data[i][17]);
 							total_elements++;
 						}
 					}
@@ -90,6 +92,7 @@ function download(formatted) {
 			//compute and store avgs
 			reducedData.states[k].avgTotalCost = total_cost/total_elements;
 			reducedData.states[k].avgMedicareCost = total_medicarepayment/total_elements;
+			reducedData.states[k].avgMaxMedicareCost = total_maxmedicarepayment/total_elements;
 			console.log(states[k] + " total members: " + total_elements);
 		}
 		
@@ -98,17 +101,20 @@ function download(formatted) {
 			for (var i=0; i < drglength; i++) {
 				var total_cost=0;
 				var total_medicarepayment=0;
+				var total_maxmedicarepayment=0;
 				var total_elements=0;
 				var drgdatalength = reducedData.states[k].drg[i].data.length; //once again, define before a loop to reduce time of computation
 				for (var j=0; j < drgdatalength; j++){
 					//using 10 and 11 instead of 18 and 19 because I filtered some data out.
 					total_cost+=parseInt(reducedData.states[k].drg[i].data[j][10]);
 					total_medicarepayment+=parseInt(reducedData.states[k].drg[i].data[j][11]);
+					total_maxmedicarepayment+=parseInt(reducedData.states[k].drg[i].data[j][9]);
 					total_elements++;
 				}
 				//compute and store avgs
 				reducedData.states[k].drg[i].avgTotalCost = total_cost/total_elements;
 				reducedData.states[k].drg[i].avgMedicareCost = total_medicarepayment/total_elements;
+				reducedData.states[k].drg[i].avgMaxMedicareCost = total_maxmedicarepayment/total_elements;
 			}
 		}
 		
