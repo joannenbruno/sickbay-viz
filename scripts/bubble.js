@@ -24,21 +24,47 @@ var Btooltip = d3.select("body")
     .style("font", "12px sans-serif")
     .text("tooltip");
 
-d3.json("data\\flare.json", function(error, root) {
-  if (error) throw error;
+// function to format data for Bubble Chart friendly JSON
+function myDataBubble() {
+  var bubbleData = {};
+  bubbleData.children = [];
+
+  for(var i = 0; i < outputData.states.length; i++) {
+        bubbleData.children.push({
+        name : outputData.states[i].stateName
+        ,size : parseInt(outputData.states[i].avgTotalCost)
+        });
+  }
+
+  return bubbleData;
+}
+
+// viz-display function
+function bubbleChart() {
+
+  // json data for bubbl chart
+  jsonNodes = myDataBubble();
+  console.log(jsonNodes);
+
+  // nodes data, built from bubble.nodes(classes()) functions
+  var nodes = bubble.nodes(classes(jsonNodes));
+  console.log(nodes);
+   //
+  //  var stringified = JSON.stringify(myDataBubble(), null, 4);
+  //  console.log(stringified);
 
   var node = Bsvg.selectAll(".node")
-      .data(bubble.nodes(classes(root)) //NOTE**classes(root) is a member function of this file that sets up the data file they want to graph, this program is then structured around that json structure
+      .data((nodes) //NOTE**classes(root) is a member function of this file that sets up the data file they want to graph, this program is then structured around that json structure
       .filter(function(d) { return !d.children; }))
-    .enter().append("g")
+      .enter().append("g")
       .attr("class", "node")
       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-	  
+
 	  .style("fill", function(d) { return color(d.packageName); })
 	  	.on("mouseover", function(d,i)
 	{
-		d3.select(this).style("fill", "gold"); 
-		showToolTip(" "+d.className+"<br>"+d.value+" ", d3.event.pageX+15 ,d3.event.pageY-55,true);
+		d3.select(this).style("fill", "gold");
+		showToolTip("State: "+d.className+"<br> Average Cost: $"+d.value+" ", d3.event.pageX+15 ,d3.event.pageY-55,true);
 		//console.log(d3.mouse(this));
 	})
 	.on("mousemove", function(d,i)
@@ -47,29 +73,19 @@ d3.json("data\\flare.json", function(error, root) {
 		tooltipDivID.css({top:d3.event.pageY-55,left:d3.event.pageX+15});
 		//showToolTip("<ul><li>"+data[0][i]+"<li>"+data[1][i]+"</ul>",d.x+d3.mouse(this)[0]+10,d.y+d3.mouse(this)[1]-10,true);
 		//console.log(d3.mouse(this));
-	})	
+	})
     .on("mouseout", function()
 	{
 		d3.select(this).style("fill", function(d) { return color(d.packageName); });
 		showToolTip(" ",0,0,false);
-	})	
-	;
-	  
-	  
+	});
+
+
   node.append("title")
       .text(function(d) { return d.className + ": " + format(d.value); });
 
   node.append("circle")
-        .attr("r", function(d) { return d.r; })
-        /*.style("fill", function(d) { return color(d.packageName); })
-        .on("mouseover", function(d) {
-                Btooltip.text(d.className + ": " + format(d.value));
-                Btooltip.style("visibility", "visible");
-        })
-        .on("mousemove", function() {
-            return Btooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
-        })
-        .on("mouseout", function(){return Btooltip.style("visibility", "hidden");});*/
+        .attr("r", function(d) { return d.r; });
 
   node.append("text")
       .style("font-size", "1px")
@@ -79,7 +95,7 @@ d3.json("data\\flare.json", function(error, root) {
       .style("text-anchor", "middle")
 	  .style("fill","black")
       .style("font-size", function(d) { return d.scale + "px"; });
-});
+};
 
 function showToolTip(pMessage,pX,pY,pShow)
 {

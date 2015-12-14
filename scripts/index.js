@@ -11,6 +11,7 @@ var outputData;
 	$( document ).ready(function() {
 		drawGraph();
 		populateServiceDropdown();
+    bubbleChart();
 	});
   });
 })();
@@ -23,7 +24,7 @@ function populateServiceDropdown(){
 	var Map = document.getElementById("USMap")
 	Map.style.visibility = "visible";
 	Map.style.zIndex = "1";*/
-	
+
 	//service selector
 	var service = '';
 	//var dataset = getData();
@@ -36,7 +37,7 @@ function populateServiceDropdown(){
 		  changeScatterData($( "#stateSelect option:selected" ).val(),$( "#serviceSelect option:selected" ).val());
 	})
 	//state
-	
+
 }
 
 $(document).ready(function($){
@@ -47,7 +48,7 @@ $(document).ready(function($){
 		states+='<option value="'+i+'">'+stateList[i]+'</option>';
 	}
 	$("#stateSelect").html(states);
-	
+
 	$("#stateSelect").change(function () {
 		changeScatterData($( "#stateSelect option:selected" ).val(),$( "#serviceSelect option:selected" ).val());
 	})
