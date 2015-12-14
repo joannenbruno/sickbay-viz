@@ -117,7 +117,7 @@ function bubbleChart(state, type) {
 	  	.on("mouseover", function(d,i)
 	{
 		d3.select(this).style("fill", "#D32F2F");
-		showToolTip("State: "+d.className+"<br> Average Cost: $"+d.value+" ", d3.event.pageX+15 ,d3.event.pageY-55,true);
+		showToolTip(d.className+"<br> Average Cost: $"+d.value+" ", d3.event.pageX+15 ,d3.event.pageY-55,true);
 		//console.log(d3.mouse(this));
 	})
 	.on("mousemove", function(d,i)
