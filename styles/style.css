@@ -9,7 +9,7 @@ min-width: 1120px;
 }
 
 .mainContainer{
-	height: 700px !important;
+	height: 685px !important;
 }
 
 .brand-logo .name{
@@ -48,8 +48,11 @@ min-width: 1120px;
 	padding-top: 30px;
 	margin: 10px auto;
 	max-width: 1500px;
-	min-width: 600px;
+	min-width: 728px;
+	height: 700px;
 }
+
+
 
 .main{
 	padding-top: 30px;
@@ -204,7 +207,6 @@ footer.page-footer{
 }
 
 body, html{
-height:100vh;
 margin: 0;
 padding: 0;
 }
