@@ -196,17 +196,5 @@ function changeScatterData(state,drg){
 	d3.selectAll('.nv-disty').remove();
 	csvg.datum(myData(state,drg)).transition().duration(500).call(chart);
 	console.log(outputData.serviceTypes[drg]);
-	d3.select('#chart-title').remove();
-	csvg.append("g")
-      .attr("class", "nv-axislabel")
-	  .attr("id", "chart-title")
-      //.attr("transform", "translate(" + (width/2 - 71) + "," + 15 + ")")
-      .attr("transform", "translate("+ 75 + "," + 20 + ")")
-    .append("text")
-	  .style("font-weight", "bold")
-	  .style("text-align", "center")
-	  .style("width", "100%")
-      //.text(outputData.serviceTypes[drg]);
-      .text("Service Cost Graph");
     nv.utils.windowResize(chart.update);
 }

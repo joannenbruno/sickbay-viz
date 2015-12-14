@@ -11,7 +11,9 @@ var Bsvg = d3.select("#bubbleMap").append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
     .attr("class", "bubble");
-	
+//                         red      purple      pink       lgreen    teal       orange     blue
+var chartColors =     ["#ff8a80", "#7c4dff", "#ff4081", "#69f0ae", "#64ffda", "#ffb74d", "#64b5f6"];
+var chartDarkColors = ["#d50000", "#6200ea", "#880e4f", "#00c853", "#00bfa5", "#e65100", "#0d47a1"];
 //var Bsvg;
 
 /*var Btooltip = d3.select("body")
@@ -112,12 +114,14 @@ function bubbleChart(state, type) {
       .enter().append("g")
       .attr("class", "node")
       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-
-	  .style("fill", function(d) { return color(d.packageName); })
+	  .style("fill", function(d) {return chartColors[d.value % chartColors.length];} )
+	  .style("stroke", function(d) {return chartDarkColors[d.value % chartDarkColors.length];} )
+	  .style("stroke-width", 1.5)
 	  	.on("mouseover", function(d,i)
 	{
-		d3.select(this).style("fill", "#D32F2F");
-		showToolTip(d.className+"<br> Average Cost: $"+d.value+" ", d3.event.pageX+15 ,d3.event.pageY-55,true);
+		d3.select(this).style("fill", "#ffff00");
+		d3.select(this).style("stroke", "#ffd600");
+		showToolTip(d.className+"<br>" + $("#costSelect option:selected").val() + ": $"+d.value+" ", d3.event.pageX+15 ,d3.event.pageY-55,true);
 		//console.log(d3.mouse(this));
 	})
 	.on("mousemove", function(d,i)
@@ -129,7 +133,8 @@ function bubbleChart(state, type) {
 	})
     .on("mouseout", function()
 	{
-		d3.select(this).style("fill", function(d) { return color(d.packageName); });
+		d3.select(this).style("fill", function(d) {return chartColors[d.value % chartColors.length];} );
+		d3.select(this).style("stroke", function(d) {return chartDarkColors[d.value % chartDarkColors.length];} );
 		showToolTip(" ",0,0,false);
 	});
 
@@ -146,8 +151,18 @@ function bubbleChart(state, type) {
       .each(getSize)
       .attr("dy", ".3em")
       .style("text-anchor", "middle")
+	  .style("stroke", "none")
 	  .style("fill","black")
       .style("font-size", function(d) { return d.scale + "px"; });
+	  
+	Bsvg.append("g")
+      .attr("class", "nv-axislabel")
+	  .attr("id", "chart-title")
+      .attr("transform", "translate("+ 30 + "," + 20 + ")")
+    .append("text")
+	  .style("text-align", "center")
+	  .style("width", "100%")
+      .text("State Service Average Cost");
 };
 
 function showToolTip(pMessage,pX,pY,pShow)
