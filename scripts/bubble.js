@@ -152,7 +152,7 @@ function bubbleChart(state, type) {
 
   node.append("text")
       .style("font-size", "1px")
-      .text(function(d) { return d.className.substring(0, d.r / 3); })
+      .text(function(d) { return d.className.substring(0, d.r / 3.2); })
       .each(getSize)
       .attr("dy", ".3em")
       .style("text-anchor", "middle")
